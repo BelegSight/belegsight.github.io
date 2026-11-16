@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security, GoBD & Runs on Atlassian Architecture — BelegSight</title>
+  <meta name="description" content="Zero external network egress, Atlassian Forge tenant isolation, XXE/zip-bomb hardening, and GDPR/GoBD architecture overview for BelegSight." />
+  <link rel="canonical" href="https://belegsight.github.io/security.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Security, GoBD & Runs on Atlassian Architecture — BelegSight" />
+  <meta property="og:description" content="Zero external network egress, Atlassian Forge tenant isolation, XXE/zip-bomb hardening, and GDPR/GoBD architecture overview for BelegSight." />
+  <meta property="og:url" content="https://belegsight.github.io/security.html" />
+  <link rel="stylesheet" href="/styles.css" />
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand-link" href="/">
+        <img src="/favicon.svg" alt="BelegSight" width="28" height="28" />
+        <span>BelegSight</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="/docs.html">Documentation</a>
+        <a href="/security.html">Runs on Atlassian Security</a>
+        <a href="/xrechnung-jira-freigabe.html">XRechnung (DE)</a>
+        <a href="/factur-x-jira-service-management.html">Factur-X (FR)</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <div class="container">
+      
+      <article class="prose">
+        <h1>Security &amp; Zero-Egress Architecture (<code>Runs on Atlassian</code>)</h1>
+        <p>Last Reviewed: 2026-11-16</p>
+
+        <div class="callout">
+          <strong>Zero External Egress Guarantee:</strong> BelegSight declares <strong>zero <code>permissions.external</code> endpoints</strong> in its Atlassian Forge manifest. Supplier invoices, IBANs, tax IDs, and line items <strong>never leave Atlassian's hosted cloud boundary</strong>.
+        </div>
+
+        <h2>1. Compute &amp; Storage Isolation</h2>
+        <ul>
+          <li><strong>100% Hosted on Atlassian Forge:</strong> All XML parsing, PDF/A-3 stream extraction, EN 16931 math verification, DATEV EXTF formatting, and SEPA pain.001 XML generation execute ephemerally inside Atlassian's isolated Node.js 22 V8 sandbox.</li>
+          <li><strong>No Vendor Servers or Databases:</strong> BelegSight operates zero external backend servers, zero third-party databases, zero analytics trackers, and zero external AI/LLM API calls.</li>
+          <li><strong>Data Residency Inheritance:</strong> Workspace configuration stored in Forge Encrypted App Storage and audit metadata stored in Jira Issue Entity Properties remain strictly inside your Jira Cloud tenant's Atlassian data residency region (e.g., EU / Frankfurt).</li>
+        </ul>
+
+        <h2>2. Input Hardening &amp; Fraud Controls</h2>
+        <ul>
+          <li><strong>XXE &amp; Entity-Expansion Blocking:</strong> DTD <code>&lt;!ENTITY&gt;</code> and external <code>SYSTEM</code> / <code>PUBLIC</code> DOCTYPE declarations are deterministically rejected prior to XML parsing.</li>
+          <li><strong>Decompression &amp; Memory Bounds:</strong> Attachments exceeding <code>15 MB</code> and compressed PDF <code>FlateDecode</code> streams exceeding <code>20 MB</code> output are rejected cleanly to prevent zip-bomb / denial-of-service vectors.</li>
+          <li><strong>Strict Content Security Policy (CSP) &amp; XSS Escaping:</strong> All Custom UI views execute external bundled scripts (no inline script evaluation) and HTML-escape every untrusted invoice string.</li>
+          <li><strong>CSV Formula-Injection Defense:</strong> DATEV EXTF text fields neutralize leading <code>=</code>, <code>+</code>, <code>-</code>, and <code>@</code> characters.</li>
+        </ul>
+
+        <h2>3. Vulnerability Disclosure</h2>
+        <p>Security researchers and enterprise security teams may report suspected vulnerabilities to <a href="mailto:belegsight@gmail.com">belegsight@gmail.com</a> with subject line <code>[SECURITY] BelegSight</code>. We acknowledge reports within 48 hours.</p>
+      </article>
+    
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong style="color:#fff;">BelegSight</strong> — Zero-Egress European E-Invoice Intake, EN 16931 Validator, DATEV EXTF &amp; SEPA Suite for Jira &amp; JSM.<br />
+        <span>Contact: <a href="mailto:belegsight@gmail.com" style="color:#7dd3fc;">belegsight@gmail.com</a> • 100% Hosted on Atlassian Forge (Zero External Egress)</span>
+      </div>
+      <div class="footer-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/security.html">Security &amp; Trust</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/eula.html">EULA / Terms</a>
+        <a href="/support.html">Support &amp; SLA</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

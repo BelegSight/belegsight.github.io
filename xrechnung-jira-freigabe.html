@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XRechnung 3.0 in Jira & Jira Service Management prüfen und freigeben (§ 14 UStG 2027)</title>
+  <meta name="description" content="Eingehende XRechnung 3.0 (UBL 2.1 & UN/CEFACT CII) Dateien inkl. Leitweg-ID direkt in Jira & JSM lesbar darstellen, nach EN 16931 validieren und ohne Datentransfer freigeben." />
+  <link rel="canonical" href="https://belegsight.github.io/xrechnung-jira-freigabe.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="XRechnung 3.0 in Jira & Jira Service Management prüfen und freigeben (§ 14 UStG 2027)" />
+  <meta property="og:description" content="Eingehende XRechnung 3.0 (UBL 2.1 & UN/CEFACT CII) Dateien inkl. Leitweg-ID direkt in Jira & JSM lesbar darstellen, nach EN 16931 validieren und ohne Datentransfer freigeben." />
+  <meta property="og:url" content="https://belegsight.github.io/xrechnung-jira-freigabe.html" />
+  <link rel="stylesheet" href="/styles.css" />
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand-link" href="/">
+        <img src="/favicon.svg" alt="BelegSight" width="28" height="28" />
+        <span>BelegSight</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="/docs.html">Documentation</a>
+        <a href="/security.html">Runs on Atlassian Security</a>
+        <a href="/xrechnung-jira-freigabe.html">XRechnung (DE)</a>
+        <a href="/factur-x-jira-service-management.html">Factur-X (FR)</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <div class="container">
+      
+      <article class="prose">
+        <h1>XRechnung 3.0 in Jira &amp; Jira Service Management prüfen und freigeben</h1>
+        <p>Seit dem <strong>1. Januar 2025</strong> gilt für alle deutschen Unternehmen die gesetzliche <strong>E-Rechnungs-Empfangspflicht (§ 14 UStG)</strong>. Ab dem <strong>1. Januar 2027</strong> greift zusätzlich die verpflichtende Ausstellung (<em>Versandpflicht</em>) für alle Lieferanten mit mehr als <code>800.000 EUR</code> Vorjahresumsatz — wodurch das Volumen reiner <code>XRechnung 3.0</code> XML-Anhänge in Jira Service Management (JSM) Eingangsrechnungs-Queues massiv ansteigt.</p>
+
+        <h2>Das Problem in Standard-Jira</h2>
+        <p>Jira und JSM zeigen angehängte <code>.xml</code>-Dateien lediglich als unlesbaren Roh-Code an. Kreditorenbuchhalter müssen Beträge, Fälligkeiten, IBAN und Leitweg-ID manuell abtippen oder sensible Rechnungsdaten in externe Web-Viewer hochladen (ein direkter Verstoß gegen strenge <code>GoBD</code>- und <code>DSGVO</code>-Vorgaben).</p>
+
+        <h2>Die Lösung mit BelegSight (100 % Runs on Atlassian)</h2>
+        <ul>
+          <li><strong>Sofort lesbare Belegansicht (DE / EN / FR):</strong> Rendert sowohl <code>UBL 2.1</code> (Invoice &amp; CreditNote) als auch <code>UN/CEFACT CII</code> direkt im Jira-Vorgang.</li>
+          <li><strong>Deterministische EN 16931 &amp; KoSIT-Regelprüfung:</strong> Prüft centgenau <code>BR-CO-10</code> bis <code>BR-CO-17</code>, Pflichtfelder <code>BR-DE-2</code> (Verkäuferkontakt), <code>BR-DE-15</code> (Käuferreferenz), <code>BR-DE-16</code> sowie die <strong>MOD 97-10 Prüfziffer deutscher Leitweg-IDs</strong> und <strong>IBAN MOD-97</strong>.</li>
+          <li><strong>Automatische JSM-Freigabe-Steuerung:</strong> Befüllt Jira Custom Fields automatisch beim Hochladen des Anhangs, sodass JSM-Genehmigungsstufen (z. B. Abteilungsleiter ab 1.000 €, CFO ab 5.000 €) ohne manuelles Abtippen starten.</li>
+        </ul>
+        <p><a class="btn btn-primary" href="/docs.html">Zur Einrichtungsdokumentation →</a></p>
+      </article>
+    
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong style="color:#fff;">BelegSight</strong> — Zero-Egress European E-Invoice Intake, EN 16931 Validator, DATEV EXTF &amp; SEPA Suite for Jira &amp; JSM.<br />
+        <span>Contact: <a href="mailto:belegsight@gmail.com" style="color:#7dd3fc;">belegsight@gmail.com</a> • 100% Hosted on Atlassian Forge (Zero External Egress)</span>
+      </div>
+      <div class="footer-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/security.html">Security &amp; Trust</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/eula.html">EULA / Terms</a>
+        <a href="/support.html">Support &amp; SLA</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,38 @@
+name: Bug Report (GDPR / GoBD Safe)
+description: Report a parsing, validation, or export issue without sharing live invoice PII/IBANs
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **IMPORTANT DATA PRIVACY WARNING:** Do **NOT** attach real production invoices, real supplier IBANs, tax numbers, or personal names. Anonymize any XML snippet and replace IBANs with public test IBANs (`DE89370400440532013000`).
+  - type: dropdown
+    id: edition
+    attributes:
+      label: BelegSight Edition
+      options:
+        - Standard Edition
+        - Advanced Edition
+        - Evaluation / Trial
+    validations:
+      required: true
+  - type: dropdown
+    id: format
+    attributes:
+      label: E-Invoice Standard
+      options:
+        - XRechnung 3.0 (UBL 2.1)
+        - XRechnung 3.0 (UN/CEFACT CII)
+        - ZUGFeRD 2.3 Hybrid PDF/A-3
+        - Factur-X 1.07 Hybrid PDF/A-3
+        - Peppol BIS Billing 3.0
+        - DATEV EXTF / SEPA pain.001 Export
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Steps to Reproduce & Anonymized Expected vs Actual Behavior
+    validations:
+      required: true

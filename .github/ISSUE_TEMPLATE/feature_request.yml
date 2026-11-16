@@ -1,0 +1,12 @@
+name: Feature / National CIUS Request
+description: Request a new accounting export, custom field mapping, or European e-invoice rule
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Use Case & Statutory / Accounting Requirement
+      placeholder: Describe the workflow in Jira / JSM (do not include confidential company data).
+    validations:
+      required: true

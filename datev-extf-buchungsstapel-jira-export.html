@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DATEV EXTF Buchungsstapel (SKR03 / SKR04) aus Jira & JSM exportieren — BelegSight</title>
+  <meta name="description" content="Freigegebene Eingangsrechnungen aus Jira als 125-spaltigen DATEV EXTF v700 Buchungsstapel CSV mit BU-Schlüssel (19%, 7%, §13b) für DATEV Rechnungswesen exportieren." />
+  <link rel="canonical" href="https://belegsight.github.io/datev-extf-buchungsstapel-jira-export.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DATEV EXTF Buchungsstapel (SKR03 / SKR04) aus Jira & JSM exportieren — BelegSight" />
+  <meta property="og:description" content="Freigegebene Eingangsrechnungen aus Jira als 125-spaltigen DATEV EXTF v700 Buchungsstapel CSV mit BU-Schlüssel (19%, 7%, §13b) für DATEV Rechnungswesen exportieren." />
+  <meta property="og:url" content="https://belegsight.github.io/datev-extf-buchungsstapel-jira-export.html" />
+  <link rel="stylesheet" href="/styles.css" />
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand-link" href="/">
+        <img src="/favicon.svg" alt="BelegSight" width="28" height="28" />
+        <span>BelegSight</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="/docs.html">Documentation</a>
+        <a href="/security.html">Runs on Atlassian Security</a>
+        <a href="/xrechnung-jira-freigabe.html">XRechnung (DE)</a>
+        <a href="/factur-x-jira-service-management.html">Factur-X (FR)</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <div class="container">
+      
+      <article class="prose">
+        <h1>DATEV EXTF Buchungsstapel (v700) direkt aus Jira exportieren</h1>
+        <p>Mit der <strong>BelegSight Advanced Edition</strong> übergeben Sie in Jira oder Jira Service Management freigegebene Eingangsrechnungen mit einem Klick im offiziellen <strong>DATEV-Format (EXTF Version 700, Datenkategorie 21 „Buchungsstapel“, Formatversion 13)</strong> an Ihre Finanzbuchhaltung oder Ihren Steuerberater.</p>
+
+        <h2>Technische Details des DATEV-Exports</h2>
+        <ul>
+          <li><strong>125-spaltige EXTF-Struktur:</strong> Vollständige Metadaten-Kopfzeile inkl. <code>Beraternummer</code>, <code>Mandantennummer</code>, <code>WJ-Beginn</code> und <code>Sachkontenlänge</code>.</li>
+          <li><strong>SKR03 &amp; SKR04 Unterstützung:</strong> Automatische Zuordnung der Standard-Aufwandskonten (z. B. <code>3400</code> / <code>5400</code> bei 19 %, <code>3300</code> / <code>5300</code> bei 7 %) sowie der <strong>DATEV BU-Schlüssel</strong> (<code>9</code> für 19 % Vorsteuer, <code>8</code> für 7 % Vorsteuer, <code>94</code> für § 13b Reverse Charge).</li>
+          <li><strong>Gemischte Steuersätze &amp; Gutschriften:</strong> Rechnungen mit mehreren Steuersätzen werden automatisch in separate Buchungszeilen aufgeteilt; Gutschriften (<code>BT-3 = 381</code>) erhalten das korrekte Haben-Kennzeichen.</li>
+          <li><strong>Automatische Sperre fehlerhafter Belege:</strong> Vorgänge mit <code>DISCREPANCY_BLOCKED</code> oder <code>INVALID</code> werden konsequent vom Buchungsstapel ausgeschlossen.</li>
+        </ul>
+      </article>
+    
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong style="color:#fff;">BelegSight</strong> — Zero-Egress European E-Invoice Intake, EN 16931 Validator, DATEV EXTF &amp; SEPA Suite for Jira &amp; JSM.<br />
+        <span>Contact: <a href="mailto:belegsight@gmail.com" style="color:#7dd3fc;">belegsight@gmail.com</a> • 100% Hosted on Atlassian Forge (Zero External Egress)</span>
+      </div>
+      <div class="footer-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/security.html">Security &amp; Trust</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/eula.html">EULA / Terms</a>
+        <a href="/support.html">Support &amp; SLA</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

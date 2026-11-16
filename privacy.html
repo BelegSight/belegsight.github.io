@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy & GDPR Data Processing — BelegSight</title>
+  <meta name="description" content="Privacy Policy and GDPR / GoBD technical data handling disclosure for BelegSight on Atlassian Forge." />
+  <link rel="canonical" href="https://belegsight.github.io/privacy.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Privacy Policy & GDPR Data Processing — BelegSight" />
+  <meta property="og:description" content="Privacy Policy and GDPR / GoBD technical data handling disclosure for BelegSight on Atlassian Forge." />
+  <meta property="og:url" content="https://belegsight.github.io/privacy.html" />
+  <link rel="stylesheet" href="/styles.css" />
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand-link" href="/">
+        <img src="/favicon.svg" alt="BelegSight" width="28" height="28" />
+        <span>BelegSight</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="/docs.html">Documentation</a>
+        <a href="/security.html">Runs on Atlassian Security</a>
+        <a href="/xrechnung-jira-freigabe.html">XRechnung (DE)</a>
+        <a href="/factur-x-jira-service-management.html">Factur-X (FR)</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <div class="container">
+      
+      <article class="prose">
+        <h1>Privacy Policy &amp; GDPR Disclosure</h1>
+        <p>Effective Date: 2026-11-16</p>
+
+        <h2>1. Overview &amp; Zero-Data-Collection Architecture</h2>
+        <p><strong>BelegSight</strong> ("we", "our", or "Vendor") provides the <em>BelegSight</em> software application for Atlassian Jira Cloud and Jira Service Management exclusively on the <strong>Atlassian Forge (<code>Runs on Atlassian</code>)</strong> platform.</p>
+        <p><strong>We do not collect, transmit, store, or have access to your Jira issues, invoice attachments, supplier IBANs, tax identifiers, or personal data on any Vendor-controlled server.</strong></p>
+
+        <h2>2. Where Invoice Data Is Processed</h2>
+        <ul>
+          <li><strong>In-Platform Execution Only:</strong> All invoice parsing, validation, and export operations execute strictly within your Atlassian Cloud environment using Atlassian Forge functions with zero external network egress.</li>
+          <li><strong>Tenant-Scoped Metadata:</strong> Admin settings (Custom Field IDs, DATEV account defaults, and company SEPA debtor settings) are stored solely in Atlassian's tenant-isolated Forge App Storage (<code>storage:app</code>). Per-issue validation summaries are stored solely inside your Jira Cloud tenant as Jira Issue Entity Properties (<code>belegsight.intake.v1</code>) and mapped Jira Custom Fields.</li>
+          <li><strong>Uninstallation &amp; Deletion:</strong> Uninstalling BelegSight or deleting the underlying Jira issues removes the associated Jira issue properties within your Atlassian Cloud environment in accordance with Atlassian's platform lifecycle.</li>
+        </ul>
+
+        <h2>3. Marketplace Billing &amp; Support Communications</h2>
+        <ul>
+          <li><strong>Atlassian Marketplace Licensing:</strong> Commercial licensing, billing, and tax invoicing are processed by <strong>Atlassian Pty Ltd</strong> as Merchant of Record under Atlassian's Privacy Policy. Atlassian provides Marketplace Partners with standard B2B license transaction metadata (such as company/workspace name, tier, and technical/billing contact if shared under Atlassian Marketplace terms) solely for license administration.</li>
+          <li><strong>Support Inquiries:</strong> If you email <a href="mailto:belegsight@gmail.com">belegsight@gmail.com</a> or open an issue on our public documentation tracker, we process your contact details and message solely to resolve your support request. <strong>Do not attach unredacted production invoices containing live personal data or live bank credentials to support tickets.</strong></li>
+          <li><strong>Static Documentation Website:</strong> This documentation website (<code>belegsight.github.io</code>) is hosted statically on GitHub Pages with zero advertising cookies, zero analytics pixels, and zero behavioral tracking scripts.</li>
+        </ul>
+
+        <h2>4. Contact</h2>
+        <p>For privacy or GDPR inquiries, contact: <a href="mailto:belegsight@gmail.com">belegsight@gmail.com</a>.</p>
+      </article>
+    
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong style="color:#fff;">BelegSight</strong> — Zero-Egress European E-Invoice Intake, EN 16931 Validator, DATEV EXTF &amp; SEPA Suite for Jira &amp; JSM.<br />
+        <span>Contact: <a href="mailto:belegsight@gmail.com" style="color:#7dd3fc;">belegsight@gmail.com</a> • 100% Hosted on Atlassian Forge (Zero External Egress)</span>
+      </div>
+      <div class="footer-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/security.html">Security &amp; Trust</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/eula.html">EULA / Terms</a>
+        <a href="/support.html">Support &amp; SLA</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

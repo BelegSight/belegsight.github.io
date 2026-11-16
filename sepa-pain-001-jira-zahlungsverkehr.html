@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEPA pain.001.001.09 Sammelüberweisung XML aus Jira generieren — BelegSight</title>
+  <meta name="description" content="Erzeugen Sie ISO 20022 SEPA Credit Transfer (pain.001.001.09 und pain.001.001.03) XML-Sammelzahlungen direkt aus freigegebenen E-Rechnungen in Jira Service Management." />
+  <link rel="canonical" href="https://belegsight.github.io/sepa-pain-001-jira-zahlungsverkehr.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SEPA pain.001.001.09 Sammelüberweisung XML aus Jira generieren — BelegSight" />
+  <meta property="og:description" content="Erzeugen Sie ISO 20022 SEPA Credit Transfer (pain.001.001.09 und pain.001.001.03) XML-Sammelzahlungen direkt aus freigegebenen E-Rechnungen in Jira Service Management." />
+  <meta property="og:url" content="https://belegsight.github.io/sepa-pain-001-jira-zahlungsverkehr.html" />
+  <link rel="stylesheet" href="/styles.css" />
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand-link" href="/">
+        <img src="/favicon.svg" alt="BelegSight" width="28" height="28" />
+        <span>BelegSight</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="/docs.html">Documentation</a>
+        <a href="/security.html">Runs on Atlassian Security</a>
+        <a href="/xrechnung-jira-freigabe.html">XRechnung (DE)</a>
+        <a href="/factur-x-jira-service-management.html">Factur-X (FR)</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <div class="container">
+      
+      <article class="prose">
+        <h1>SEPA pain.001.001.09 Sammelüberweisung direkt aus Jira Service Management</h1>
+        <p>Nach erfolgreicher fachlicher und rechnerischer Prüfung in Jira Service Management erzeugt die <strong>BelegSight Advanced Edition</strong> mit einem Klick eine bankfertige <strong>ISO 20022 SEPA-Sammelüberweisung</strong> für Ihr Firmenkunden-Banking oder EBICS-System (z. B. Sparkasse SFirm, VR-NetWorld, Deutsche Bank, Commerzbank, Qonto, Finom).</p>
+
+        <h2>Unterstützte ISO-20022-Schemata &amp; Sicherheitsprüfungen</h2>
+        <ul>
+          <li><strong><code>pain.001.001.09</code> (Aktueller DK-Standard):</strong> Inklusive <code>&lt;ReqdExctnDt&gt;&lt;Dt&gt;</code> und <code>&lt;BICFI&gt;</code> gemäß aktueller Spezifikation der Deutschen Kreditwirtschaft.</li>
+          <li><strong><code>pain.001.001.03</code> (Legacy-Kompatibilitätsmodus):</strong> Für ältere Banking-Clients umschaltbar.</li>
+          <li><strong>Strikte IBAN-MOD-97- &amp; Betrugs-Sperre:</strong> Jede Auftraggeber- und Empfänger-IBAN wird per BigInt <code>MOD-97</code> geprüft. Tickets mit erkanntem PDF-vs-XML-Konflikt (<code>DISCREPANCY_BLOCKED</code>), Fremdwährungen (nicht EUR) oder Gutschriften werden automatisch herausgefiltert, bevor eine Überweisung ausgelöst werden kann.</li>
+        </ul>
+      </article>
+    
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong style="color:#fff;">BelegSight</strong> — Zero-Egress European E-Invoice Intake, EN 16931 Validator, DATEV EXTF &amp; SEPA Suite for Jira &amp; JSM.<br />
+        <span>Contact: <a href="mailto:belegsight@gmail.com" style="color:#7dd3fc;">belegsight@gmail.com</a> • 100% Hosted on Atlassian Forge (Zero External Egress)</span>
+      </div>
+      <div class="footer-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/security.html">Security &amp; Trust</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/eula.html">EULA / Terms</a>
+        <a href="/support.html">Support &amp; SLA</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

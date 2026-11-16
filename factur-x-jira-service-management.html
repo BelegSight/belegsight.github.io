@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Factur-X 1.07 dans Jira & Jira Service Management — Réforme Facturation Électronique 2026/2027</title>
+  <meta name="description" content="Validation EN 16931 des factures hybrides Factur-X 1.07 (PDF/A-3 + CII XML), détection des écarts IBAN/TVA et export SEPA pain.001 directement dans Jira Cloud." />
+  <link rel="canonical" href="https://belegsight.github.io/factur-x-jira-service-management.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Factur-X 1.07 dans Jira & Jira Service Management — Réforme Facturation Électronique 2026/2027" />
+  <meta property="og:description" content="Validation EN 16931 des factures hybrides Factur-X 1.07 (PDF/A-3 + CII XML), détection des écarts IBAN/TVA et export SEPA pain.001 directement dans Jira Cloud." />
+  <meta property="og:url" content="https://belegsight.github.io/factur-x-jira-service-management.html" />
+  <link rel="stylesheet" href="/styles.css" />
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand-link" href="/">
+        <img src="/favicon.svg" alt="BelegSight" width="28" height="28" />
+        <span>BelegSight</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="/docs.html">Documentation</a>
+        <a href="/security.html">Runs on Atlassian Security</a>
+        <a href="/xrechnung-jira-freigabe.html">XRechnung (DE)</a>
+        <a href="/factur-x-jira-service-management.html">Factur-X (FR)</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <div class="container">
+      
+      <article class="prose">
+        <h1>Factur-X 1.07 &amp; EN 16931 dans Jira Service Management (Réforme 2026 / 2027)</h1>
+        <p>Depuis le <strong>1er septembre 2026</strong>, toutes les entreprises assujetties à la TVA en France doivent être en mesure de recevoir des factures électroniques structurées aux formats du socle <strong>EN 16931</strong> : <code>Factur-X 1.07</code> (PDF/A-3 hybride contenant <code>factur-x.xml</code>), <code>UBL 2.1</code> et <code>UN/CEFACT CII</code>.</p>
+
+        <h2>Fonctionnalités clés de BelegSight pour les équipes Finance &amp; Comptabilité Fournisseurs</h2>
+        <ul>
+          <li><strong>Interface trilingue native (FR / DE / EN) :</strong> Lecture instantanée des factures <code>Factur-X 1.07</code> (profils EN 16931, EXTENDED, BASIC, MINIMUM) directement dans le panneau Jira / JSM.</li>
+          <li><strong>Contrôle anti-fraude PDF ≠ XML :</strong> Vérifie automatiquement la cohérence entre l'IBAN bénéficiaire (<code>BT-84</code>), le montant de TVA (<code>BT-110</code>) et le total TTC (<code>BT-112</code>) du fichier XML faisant foi et le PDF visuel lu par les valideurs.</li>
+          <li><strong>100 % <code>Runs on Atlassian</code> (Conforme RGPD) :</strong> Aucune donnée comptable ne quitte l'infrastructure cloud Atlassian.</li>
+          <li><strong>Virements groupés SEPA ISO 20022 (<code>pain.001.001.09</code>) :</strong> Génération en un clic du fichier XML de virement bancaire pour les factures approuvées (Advanced Edition).</li>
+        </ul>
+      </article>
+    
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong style="color:#fff;">BelegSight</strong> — Zero-Egress European E-Invoice Intake, EN 16931 Validator, DATEV EXTF &amp; SEPA Suite for Jira &amp; JSM.<br />
+        <span>Contact: <a href="mailto:belegsight@gmail.com" style="color:#7dd3fc;">belegsight@gmail.com</a> • 100% Hosted on Atlassian Forge (Zero External Egress)</span>
+      </div>
+      <div class="footer-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/security.html">Security &amp; Trust</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/eula.html">EULA / Terms</a>
+        <a href="/support.html">Support &amp; SLA</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

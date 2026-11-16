@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BelegSight for Jira & JSM — XRechnung 3.0, ZUGFeRD 2.3, Factur-X, DATEV EXTF & SEPA pain.001</title>
+  <meta name="description" content="Zero-egress (Runs on Atlassian) European EN 16931 e-invoice intake, PDF-vs-XML 19% Vorsteuerabzug & IBAN fraud guard, DATEV EXTF Buchungsstapel, and SEPA pain.001 suite for Jira & Jira Service Management." />
+  <link rel="canonical" href="https://belegsight.github.io/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BelegSight for Jira & JSM — XRechnung 3.0, ZUGFeRD 2.3, Factur-X, DATEV EXTF & SEPA pain.001" />
+  <meta property="og:description" content="Zero-egress (Runs on Atlassian) European EN 16931 e-invoice intake, PDF-vs-XML 19% Vorsteuerabzug & IBAN fraud guard, DATEV EXTF Buchungsstapel, and SEPA pain.001 suite for Jira & Jira Service Management." />
+  <meta property="og:url" content="https://belegsight.github.io/" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"BelegSight — EU E-Invoice, XRechnung, ZUGFeRD, DATEV & SEPA for Jira","applicationCategory":"FinanceApplication","operatingSystem":"Atlassian Jira Cloud, Jira Service Management","offers":{"@type":"Offer","priceCurrency":"USD","price":"10.00"}}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand-link" href="/">
+        <img src="/favicon.svg" alt="BelegSight" width="28" height="28" />
+        <span>BelegSight</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="/docs.html">Documentation</a>
+        <a href="/security.html">Runs on Atlassian Security</a>
+        <a href="/xrechnung-jira-freigabe.html">XRechnung (DE)</a>
+        <a href="/factur-x-jira-service-management.html">Factur-X (FR)</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  
+  <section class="hero">
+    <div class="container">
+      <div class="badge-row">
+        <span class="badge badge-green">✓ 100% Runs on Atlassian • Zero External Egress</span>
+        <span class="badge">EN 16931 • XRechnung 3.0 • ZUGFeRD 2.3 • Factur-X 1.07 • Peppol BIS 3.0</span>
+      </div>
+      <h1>Turn Jira &amp; Jira Service Management into a Statutory European E-Invoice Approval Desk.</h1>
+      <p class="lead">
+        Validate inbound <strong>.xml</strong> and hybrid <strong>PDF/A-3</strong> invoices directly inside Atlassian Forge,
+        block <strong>PDF ≠ XML IBAN spoofing &amp; 19% Vorsteuerabzug (§ 15 UStG)</strong> audit risks automatically, populate JSM Approval Custom Fields, and export approved batches to <strong>DATEV EXTF</strong> &amp; <strong>SEPA pain.001</strong>.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/docs.html">Read Quickstart &amp; Admin Guide</a>
+        <a class="btn btn-secondary" href="/security.html">Zero-Egress Security Architecture</a>
+      </div>
+    </div>
+  </section>
+  <main>
+    <div class="container">
+      
+      <div class="callout">
+        <strong>Statutory Mandate Readiness (2026–2027):</strong> Germany mandatory B2B reception (<code>§ 14 UStG</code> active) &amp; <code>&gt; €800k</code> mandatory issuance (<strong>Jan 1, 2027</strong>) • France universal B2B <code>Factur-X / CII / UBL</code> reception (<strong>Sept 1, 2026</strong>) • Belgium mandatory B2B <code>Peppol BIS Billing 3.0</code> (<strong>Jan 1, 2026</strong>).
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>1. Unified EN 16931 Intake (DE / EN / FR)</h3>
+          <p>Automatically parses standalone <code>.xml</code> (UBL 2.1 Invoice &amp; CreditNote, UN/CEFACT CII) and binary hybrid <code>PDF/A-3</code> attachments (<code>factur-x.xml</code>, <code>zugferd-invoice.xml</code>) into a clean trilingual Jira &amp; JSM Issue Panel.</p>
+        </div>
+        <div class="card">
+          <h3>2. PDF ≠ XML IBAN &amp; Vorsteuerabzug Guard</h3>
+          <p>Under German BMF rules, the embedded XML is the legally binding <em>führender Teil</em>, while human approvers read the visual PDF. BelegSight cross-checks PDF text against XML to catch spoofed IBANs and VAT/Gross mismatches before approval.</p>
+        </div>
+        <div class="card">
+          <h3>3. Native JSM Approvals, DATEV &amp; SEPA</h3>
+          <p>Auto-populates Jira Custom Fields (<code>Gross Total</code>, <code>VAT</code>, <code>Payee IBAN</code>, <code>Due Date</code>, <code>Audit Verdict</code>) on attachment upload, and exports approved tickets to 125-column <strong>DATEV EXTF Buchungsstapel</strong> CSV &amp; <strong>ISO 20022 SEPA pain.001</strong> XML.</p>
+        </div>
+      </div>
+
+      <h2>Standard vs. Advanced Forge App Editions</h2>
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>Standard Edition</th>
+            <th>Advanced Edition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>100% <code>Runs on Atlassian</code> Zero-Egress Forge Architecture (GoBD &amp; GDPR Ready)</td>
+            <td>✓ Included</td>
+            <td>✓ Included</td>
+          </tr>
+          <tr>
+            <td>Unified <code>EN 16931</code> Parser (<code>XRechnung 3.0</code>, <code>ZUGFeRD 2.3</code>, <code>Factur-X 1.07</code>, <code>Peppol BIS 3.0</code>)</td>
+            <td>✓ Included</td>
+            <td>✓ Included</td>
+          </tr>
+          <tr>
+            <td>Trilingual Human-Readable Jira &amp; JSM Issue Panel (<code>DE</code> / <code>EN</code> / <code>FR</code>)</td>
+            <td>✓ Included</td>
+            <td>✓ Included</td>
+          </tr>
+          <tr>
+            <td>Cent-Exact <code>BR-CO-10..17</code> Math, <code>IBAN MOD-97</code> &amp; German <code>Leitweg-ID</code> Checksum Validator</td>
+            <td>✓ Included</td>
+            <td>✓ Included</td>
+          </tr>
+          <tr>
+            <td><strong>PDF-vs-XML Discrepancy Guard</strong> (Hybrid PDF/A-3 &amp; Paired <code>.pdf</code> + <code>.xml</code> IBAN / Total / VAT Check)</td>
+            <td>✓ Included</td>
+            <td>✓ Included</td>
+          </tr>
+          <tr>
+            <td>Idempotent Auto-Intake Trigger &amp; Jira Custom Field Mapper for JSM Approvals</td>
+            <td>✓ Included</td>
+            <td>✓ Included</td>
+          </tr>
+          <tr>
+            <td><strong>1-Click <code>DATEV EXTF Buchungsstapel</code> (v700 / Format 13, SKR03 &amp; SKR04) CSV Export</strong></td>
+            <td>—</td>
+            <td><strong>✓ Included</strong></td>
+          </tr>
+          <tr>
+            <td><strong>1-Click <code>SEPA Credit Transfer</code> (<code>pain.001.001.09</code> &amp; <code>pain.001.001.03</code>) Batch Payment XML</strong></td>
+            <td>—</td>
+            <td><strong>✓ Included</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Compliance &amp; Workflow Guides</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3><a href="/xrechnung-jira-freigabe.html">XRechnung 3.0 Rechnungsfreigabe in Jira &amp; JSM (§ 14 UStG)</a></h3>
+          <p>Wie Finanzteams eingehende UBL- und CII-XRechnungen inkl. Leitweg-ID-Prüfung direkt im Jira Service Management freigeben.</p>
+        </div>
+        <div class="card">
+          <h3><a href="/zugferd-pdf-xml-abweichung-vorsteuerabzug.html">ZUGFeRD 2.3 PDF-vs-XML Abweichung &amp; 19% Vorsteuerabzug</a></h3>
+          <p>Warum das eingebettete XML steuerrechtlich führend ist und wie BelegSight IBAN-Manipulationen vor der Zahlung stoppt.</p>
+        </div>
+        <div class="card">
+          <h3><a href="/datev-extf-buchungsstapel-jira-export.html">DATEV EXTF Buchungsstapel (SKR03 / SKR04) aus Jira exportieren</a></h3>
+          <p>125-spaltiger DATEV-Format-v700-Export mit automatischer BU-Schlüssel-Zuordnung (9 / 8 / 94) für Ihren Steuerberater.</p>
+        </div>
+        <div class="card">
+          <h3><a href="/sepa-pain-001-jira-zahlungsverkehr.html">SEPA pain.001.001.09 Sammelüberweisung aus Jira</a></h3>
+          <p>ISO-20022-konforme Zahlungsdateien für EBICS / Firmenkunden-Banking mit automatischer Sperre fehlerhafter Belege.</p>
+        </div>
+      </div>
+    
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong style="color:#fff;">BelegSight</strong> — Zero-Egress European E-Invoice Intake, EN 16931 Validator, DATEV EXTF &amp; SEPA Suite for Jira &amp; JSM.<br />
+        <span>Contact: <a href="mailto:belegsight@gmail.com" style="color:#7dd3fc;">belegsight@gmail.com</a> • 100% Hosted on Atlassian Forge (Zero External Egress)</span>
+      </div>
+      <div class="footer-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/security.html">Security &amp; Trust</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/eula.html">EULA / Terms</a>
+        <a href="/support.html">Support &amp; SLA</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

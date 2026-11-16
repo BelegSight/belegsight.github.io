@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation & Admin Guide — BelegSight for Jira & Jira Service Management</title>
+  <meta name="description" content="Step-by-step installation, Jira Custom Field auto-provisioning, JSM Approval workflow setup, DATEV EXTF SKR03/SKR04 export, and SEPA pain.001 batch payment guide." />
+  <link rel="canonical" href="https://belegsight.github.io/docs.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Documentation & Admin Guide — BelegSight for Jira & Jira Service Management" />
+  <meta property="og:description" content="Step-by-step installation, Jira Custom Field auto-provisioning, JSM Approval workflow setup, DATEV EXTF SKR03/SKR04 export, and SEPA pain.001 batch payment guide." />
+  <meta property="og:url" content="https://belegsight.github.io/docs.html" />
+  <link rel="stylesheet" href="/styles.css" />
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand-link" href="/">
+        <img src="/favicon.svg" alt="BelegSight" width="28" height="28" />
+        <span>BelegSight</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="/docs.html">Documentation</a>
+        <a href="/security.html">Runs on Atlassian Security</a>
+        <a href="/xrechnung-jira-freigabe.html">XRechnung (DE)</a>
+        <a href="/factur-x-jira-service-management.html">Factur-X (FR)</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <div class="container">
+      
+      <article class="prose">
+        <h1>BelegSight Documentation &amp; Administrator Guide</h1>
+        <p><strong>Version:</strong> 1.0 • <strong>Platform:</strong> Atlassian Forge (<code>Runs on Atlassian</code>, Node.js 22 runtime) • <strong>Products:</strong> Jira Cloud &amp; Jira Service Management (JSM)</p>
+
+        <h2>1. Installation &amp; Zero-Config Startup</h2>
+        <ol>
+          <li>Install <strong>BelegSight</strong> from the Atlassian Marketplace into your Jira Cloud / Jira Service Management site (choose <strong>Standard</strong> or <strong>Advanced Edition</strong>; both include a free Atlassian Marketplace evaluation period).</li>
+          <li>Open any Jira or JSM issue containing an attached <code>.xml</code> (XRechnung / Peppol / EN 16931) or hybrid <code>.pdf</code> (ZUGFeRD 2.3 / Factur-X 1.07) invoice.</li>
+          <li>Click the <strong>BelegSight E-Invoice (EN 16931)</strong> Issue Panel button to view the rendered invoice in <strong>DE</strong>, <strong>EN</strong>, or <strong>FR</strong> alongside the EN 16931 validation log and PDF-vs-XML Fraud Guard status.</li>
+        </ol>
+
+        <h2>2. Auto-Provisioning Jira Custom Fields for JSM Approvals</h2>
+        <p>To route invoices automatically through Jira Service Management approval gates (e.g., requiring CFO sign-off above <code>EUR 5,000.00</code> while blocking tampered PDFs):</p>
+        <ol>
+          <li>Navigate to <strong>Jira Administration (⚙️) → Apps → BelegSight E-Invoice Settings</strong>.</li>
+          <li>Click <strong>1-Click Auto-Create Standard Fields</strong> (or map your existing Jira Custom Fields):
+            <ul>
+              <li><code>BelegSight Gross Total</code> (Number — <code>BT-112</code>)</li>
+              <li><code>BelegSight VAT Amount</code> (Number — <code>BT-110</code>)</li>
+              <li><code>BelegSight Currency</code> (Text — <code>BT-5</code>)</li>
+              <li><code>BelegSight Supplier IBAN</code> (Text — <code>BT-84</code>)</li>
+              <li><code>BelegSight Invoice Number</code> (Text — <code>BT-1</code>)</li>
+              <li><code>BelegSight Due Date</code> (Date — <code>BT-9</code>)</li>
+              <li><code>BelegSight Leitweg-ID / Buyer Ref</code> (Text — <code>BT-10</code>)</li>
+              <li><code>BelegSight Audit Verdict</code> (Text — <code>VALID</code>, <code>DISCREPANCY_BLOCKED</code>, or <code>INVALID</code>)</li>
+            </ul>
+          </li>
+          <li>Add the mapped fields to your JSM Project Screen if required by your Jira field configuration.</li>
+          <li>Whenever a supplier emails or uploads an invoice attachment, BelegSight's idempotent <code>avi:jira:created:attachment</code> trigger computes a deterministic SHA-256 digest, validates the invoice, stores the summary in Jira Issue Property <code>belegsight.intake.v1</code>, and updates your mapped Custom Fields automatically.</li>
+        </ol>
+
+        <h2>3. Recommended JQL &amp; JSM Workflow Conditions</h2>
+        <p>Because BelegSight writes a structured Jira Issue Entity Property (<code>belegsight.intake.v1</code>) in addition to Custom Fields, you can block payment transitions whenever an EN 16931 error or PDF-vs-XML discrepancy exists:</p>
+        <pre><code>"BelegSight Audit Verdict" = "VALID" AND "BelegSight Gross Total" &gt; 5000</code></pre>
+
+        <h2>4. Exporting Approved Invoices to DATEV EXTF &amp; SEPA pain.001 (Advanced Edition)</h2>
+        <ol>
+          <li>Open your Jira / JSM project sidebar and select <strong>BelegSight DATEV &amp; SEPA Export</strong>.</li>
+          <li>BelegSight lists all project issues in your configured Approved statuses (default: <code>Approved</code>, <code>Freigegeben</code>, <code>Zur Zahlung freigegeben</code>, <code>Done</code>).</li>
+          <li><strong>DATEV EXTF Buchungsstapel:</strong> Enter your <code>Beraternummer</code>, <code>Mandantennummer</code>, and chart of accounts (<code>SKR03</code> or <code>SKR04</code>), then click <strong>Download EXTF_Buchungsstapel.csv</strong>. Multi-rate invoices (19% + 7%) are split into separate booking rows with matching <code>BU-Schlüssel</code> (<code>9</code> for 19%, <code>8</code> for 7%, <code>94</code> for § 13b Reverse Charge).</li>
+          <li><strong>SEPA Credit Transfer (pain.001):</strong> Enter your company Debtor Name, Debtor IBAN, Execution Date, and schema version (<code>pain.001.001.09</code> current Deutsche Kreditwirtschaft / EPC standard, or <code>pain.001.001.03</code> legacy), then click <strong>Download SEPA pain.001 XML</strong>. Any ticket with <code>DISCREPANCY_BLOCKED</code>, <code>INVALID</code>, credit-note type <code>381</code>, or non-EUR currency is automatically excluded and listed in the skip log.</li>
+        </ol>
+      </article>
+    
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong style="color:#fff;">BelegSight</strong> — Zero-Egress European E-Invoice Intake, EN 16931 Validator, DATEV EXTF &amp; SEPA Suite for Jira &amp; JSM.<br />
+        <span>Contact: <a href="mailto:belegsight@gmail.com" style="color:#7dd3fc;">belegsight@gmail.com</a> • 100% Hosted on Atlassian Forge (Zero External Egress)</span>
+      </div>
+      <div class="footer-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/security.html">Security &amp; Trust</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/eula.html">EULA / Terms</a>
+        <a href="/support.html">Support &amp; SLA</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://belegsight.github.io/sitemap.xml

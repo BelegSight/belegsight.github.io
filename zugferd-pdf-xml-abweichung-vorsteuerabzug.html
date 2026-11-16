@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZUGFeRD 2.3 Hybrid-PDF vs. XML Abweichung: 19% Vorsteuerabzug (§ 15 UStG) & IBAN-Betrug schützen</title>
+  <meta name="description" content="Warum bei ZUGFeRD 2.3 und Factur-X Hybrid-Rechnungen nur der eingebettete XML-Datensatz steuerrechtlich maßgeblich ist und wie BelegSight PDF-XML-Abweichungen in Jira erkennt." />
+  <link rel="canonical" href="https://belegsight.github.io/zugferd-pdf-xml-abweichung-vorsteuerabzug.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ZUGFeRD 2.3 Hybrid-PDF vs. XML Abweichung: 19% Vorsteuerabzug (§ 15 UStG) & IBAN-Betrug schützen" />
+  <meta property="og:description" content="Warum bei ZUGFeRD 2.3 und Factur-X Hybrid-Rechnungen nur der eingebettete XML-Datensatz steuerrechtlich maßgeblich ist und wie BelegSight PDF-XML-Abweichungen in Jira erkennt." />
+  <meta property="og:url" content="https://belegsight.github.io/zugferd-pdf-xml-abweichung-vorsteuerabzug.html" />
+  <link rel="stylesheet" href="/styles.css" />
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand-link" href="/">
+        <img src="/favicon.svg" alt="BelegSight" width="28" height="28" />
+        <span>BelegSight</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="/docs.html">Documentation</a>
+        <a href="/security.html">Runs on Atlassian Security</a>
+        <a href="/xrechnung-jira-freigabe.html">XRechnung (DE)</a>
+        <a href="/factur-x-jira-service-management.html">Factur-X (FR)</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <div class="container">
+      
+      <article class="prose">
+        <h1>ZUGFeRD 2.3 Hybrid-PDF vs. XML: Vorsteuerabzug (§ 15 UStG) &amp; IBAN-Betrug in Jira absichern</h1>
+        <p>Hybride <code>ZUGFeRD 2.3</code> und <code>Factur-X 1.07</code> Dateien im Format <code>PDF/A-3</code> enthalten sowohl ein sichtbares PDF-Bild für den Menschen als auch eine eingebettete XML-Datei (<code>zugferd-invoice.xml</code> bzw. <code>factur-x.xml</code>) für die Buchhaltung.</p>
+
+        <div class="callout callout-warn">
+          <strong>Steuer- &amp; Haftungsfalle:</strong> Nach den BMF-Grundsätzen zu <code>§ 14 UStG</code> ist bei einer E-Rechnung der strukturierte XML-Teil rechtlich maßgeblich (<em>führender Teil</em>). In Jira betrachten Freigeber jedoch fast ausschließlich die visuelle PDF-Vorschau!
+        </div>
+
+        <h2>Zwei reale Risiken in der Rechnungsfreigabe</h2>
+        <ol>
+          <li><strong>IBAN-Manipulation (CEO- / Lieferanten-Betrug):</strong> Das sichtbare PDF zeigt die bekannte Lieferanten-IBAN, während im eingebetteten XML (aus dem später die SEPA-Zahlungsdatei erzeugt wird!) eine manipulierte Angreifer-IBAN hinterlegt ist.</li>
+          <li><strong>Gefährdung des 19 % Vorsteuerabzugs (§ 15 UStG):</strong> Weichen Netto-, Steuer- oder Bruttobeträge zwischen PDF und XML aufgrund fehlerhafter ERP-Exporte ab, droht bei einer Betriebsprüfung die Versagung oder Korrektur des Vorsteuerabzugs.</li>
+        </ol>
+
+        <h2>Wie der BelegSight Discrepancy Guard schützt</h2>
+        <p>BelegSight extrahiert im isolierten Atlassian Forge Node.js-22-Backend sowohl das eingebettete XML als auch die sichtbaren Textsignale des PDFs (und prüft ebenso paarweise angehängte <code>.pdf</code> + <code>.xml</code> Dateien im selben Ticket):</p>
+        <ul>
+          <li>Abgleich der <strong>Empfänger-IBAN (BT-84)</strong> gegen alle im PDF gedruckten IBANs</li>
+          <li>Abgleich von <strong>Bruttogesamtbetrag (BT-112 / BT-115)</strong> und <strong>Umsatzsteuerbetrag (BT-110)</strong></li>
+          <li>Abgleich der <strong>Verkäufer-USt-IdNr. (BT-31)</strong> unter sauberem Ausschluss der eigenen Käufer-USt-IdNr.</li>
+        </ul>
+        <p>Bei einer kritischen Abweichung setzt BelegSight das Prüfergebnis sofort auf <code>DISCREPANCY_BLOCKED</code> und verhindert sowohl die JSM-Freigabe als auch den SEPA-/DATEV-Export.</p>
+      </article>
+    
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong style="color:#fff;">BelegSight</strong> — Zero-Egress European E-Invoice Intake, EN 16931 Validator, DATEV EXTF &amp; SEPA Suite for Jira &amp; JSM.<br />
+        <span>Contact: <a href="mailto:belegsight@gmail.com" style="color:#7dd3fc;">belegsight@gmail.com</a> • 100% Hosted on Atlassian Forge (Zero External Egress)</span>
+      </div>
+      <div class="footer-links">
+        <a href="/docs.html">Docs</a>
+        <a href="/security.html">Security &amp; Trust</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/eula.html">EULA / Terms</a>
+        <a href="/support.html">Support &amp; SLA</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# BelegSight — Zero-Egress European E-Invoice Suite for Jira & Jira Service Management
+
+> BelegSight is a 100% "Runs on Atlassian" (zero external network egress) Atlassian Forge app for Jira Cloud and Jira Service Management (JSM). It parses and validates inbound EN 16931 electronic invoices (German XRechnung 3.0 UBL/CII, ZUGFeRD 2.3 hybrid PDF/A-3, French Factur-X 1.07, and Peppol BIS Billing 3.0), detects PDF-vs-XML IBAN spoofing and 19% Vorsteuerabzug (§ 15 UStG) discrepancies, populates Jira Custom Fields for JSM Approvals, and exports approved invoices to DATEV EXTF (Buchungsstapel v700 CSV) and SEPA Credit Transfer (ISO 20022 pain.001.001.09 XML).
+
+## Official Links
+- Homepage: https://belegsight.github.io/
+- Documentation & Admin Setup: https://belegsight.github.io/docs.html
+- Security & Zero-Egress Architecture: https://belegsight.github.io/security.html
+- Privacy Policy (GDPR / GoBD): https://belegsight.github.io/privacy.html
+- End-User License Agreement (EULA): https://belegsight.github.io/eula.html
+- Support & SLA: https://belegsight.github.io/support.html
+- Contact: belegsight@gmail.com
+
+## Statutory & Technical Guides
+- XRechnung 3.0 Approval in Jira & JSM (DE): https://belegsight.github.io/xrechnung-jira-freigabe.html
+- ZUGFeRD 2.3 PDF-vs-XML Discrepancy & 19% Vorsteuerabzug Guard (DE): https://belegsight.github.io/zugferd-pdf-xml-abweichung-vorsteuerabzug.html
+- Factur-X 1.07 & French 2026/2027 E-Invoicing in JSM (FR): https://belegsight.github.io/factur-x-jira-service-management.html
+- DATEV EXTF Buchungsstapel SKR03/SKR04 Export from Jira (DE): https://belegsight.github.io/datev-extf-buchungsstapel-jira-export.html
+- SEPA pain.001.001.09 Batch Payment XML from Jira (DE): https://belegsight.github.io/sepa-pain-001-jira-zahlungsverkehr.html
